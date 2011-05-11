@@ -1,0 +1,328 @@
+%\def\CTeXPreproc{Created by ctex v0.2.12, don't edit!}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5%%%%%%%%%%%%%%%
+%  本文档可在安装了CTEX宏包，CTEX字体下的TEX系统运行，
+%  访问http://www.ctex.org，可以获得最新的宏包与字体安装包
+%
+%  请使用PDFLATEX对模板编译2次，可得正确结果，由于hyperref的设置中不支持DVI-PDF，
+%  用LATEX编译时需要替换相应的命令，详见相应注释。
+%
+% 文档是在原来李湛、何力同学的模板的基础上修改的，主要包括以下几个地方：
+%
+%1.修正了原模板使用hyperref宏包中的设置，使文档更加美观，对设置作出了说明，可以进一步修改
+%2.修正了定理的样式，原定理标题是黑体加粗，现改为黑体，原定理正文为倾斜楷体，现改为楷体，符合一般论文的格式
+%3.对导言区的少部分命令修改，删去了一些默认的重复的设置
+%4.对模板的少部分正文进行充实
+%5.对部分原来模板中的注释进行了修改，删去了不必要的，加入了一些中文的注释，方便查阅
+%
+%  by 张越 Apr.12，有问题请发送你的问题到：frank_melody@hotmail.com
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% documentclass can be ctexart, ctexrep, ctexbook，推荐使用模板中的CTEXREP
+% cs4size - 默认的字体大小，小四
+% punct - 对中文标点的位置（宽度）进行调整
+% twoside - if you want to print on both side of the paper, or else you should omit this
+
+\documentclass[titlepage,12pt,fleqn]{article}
+\usepackage{amssymb}
+
+% default paper settings, change it according to your word
+\usepackage[a4paper,hmargin={2.54cm,2.54cm},vmargin={3.17cm,3.17cm}]{geometry}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{pdflscape}
+\usepackage{rotating}
+\usepackage{amsfonts}
+\usepackage{natbib}
+\usepackage{wrapfig}
+\usepackage{subfigure}
+
+
+% 公式编号的计数格式，在章内计数
+%\numberwithin{equation}{section} \pagestyle{empty}
+% set the abstract format, need abstract package
+\usepackage[runin]{abstract}
+
+%使用hyperref宏包，对目录，公式引用，文献引用做超链接，超链接方便电子版的阅读，但不影响打印
+% pdfborder对超链接的边框大小进行设置，模板中默认边框大小为0
+% colorlinks=true，表示超链接对应的文字采用超链接边框的颜色，=false时保持原字体颜色
+% linkcolor=blue，设置超链接边框的颜色，可以改为red,green等等。
+% CJKbookmarks=true，生成PDF中文书签，
+% 非CTEX套装用户可能发现即便如此设置，生成的PDF书签也是乱码，需要用GBK2UNI.EXE解决
+%\usepackage[pdfborder={0 0 0},colorlinks=true,linkcolor=blue,CJKbookmarks=true]{hyperref}
+%若要用LATEX编译，请用下面的命令替代上述命令：
+\usepackage[dvipdfm,pdfborder={0 0 0},colorlinks=true,linkcolor=blue,CJKbookmarks=true]{hyperref}
+\usepackage[runin]{abstract}
+\setlength{\oddsidemargin}{0 cm} \setlength{\evensidemargin}{0 cm}
+\setlength{\textwidth}{16.6 cm} \setlength{\topmargin}{0 cm}
+\setlength{\headsep}{0 cm} \setlength{\textheight}{22.9 cm}
+\voffset=-1.1cm
+
+
+
+
+%%%%%%%%%%%%%%%%%%%导言区设置完毕
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Styles for chapters/section
+%若要将章标题左对齐，用下面这个语句替换相应的设置
+%\CTEXsetup[nameformat={\raggedright\zihao{3}\bfseries},%
+
+
+%\def\th{\theta}
+\newcommand{\ben}{\begin{eqnarray*}}
+\newcommand{\een}{\end{eqnarray*}}
+\newcommand{\beq}{\begin{eqnarray}}
+\newcommand{\eeq}{\end{eqnarray}}
+\newcommand{\raro}{\rightarrow}
+%\newcommand{\be}{\beta}
+%\newcommand{\bth}{\mbox{\boldmath$\theta$}}
+%\newcommand{\bmu}{\mbox{\boldmath$\mu$}}
+%$\newcommand{\by}{\mbox{\boldmath$y$}}
+%\newcommand{\bI}{\mbox{\boldmath$I$}}
+%\newcommand{\bY}{\mbox{\boldmath$Y$}}
+%\newcommand{\bD}{\mbox{\boldmath$D$}}
+%\newcommand{\bJ}{\mbox{\boldmath$J$}}
+%\newcommand{\bla}{\mbox{\boldmath$\lambda$}}
+%\newcommand{\la}{\lambda}
+%\newcommand{\bV}{\mbox{\boldmath$V$}}
+%\newcommand{\Si}{\Sigma}
+%\newcommand{\La}{\Lambda}
+%\newcommand{\si}{\sigma}
+%\newcommand{\bfe}{{\bf {e}}}
+%\newcommand{\bfr}{{\bf {r}}}
+\newcommand{\bfe}{{\bf {e}}}
+\newcommand{\bfx}{{\bf {x}}}
+\newcommand{\bfv}{{\bf {v}}}
+\newcommand{\bfI}{{\bf {I}}}
+\newcommand{\bfY}{{\bf {Y}}}
+\newcommand{\bfX}{{\bf {X}}}
+\newcommand{\bfZ}{{\bf {Z}}}
+\newcommand{\BE}{I\!\!E}
+%\newcommand{\BP}{I\!\!P}
+\newcommand{\BR}{I\!\!R}
+\newcommand{\cA}{{\cal A}}
+\newcommand{\cB}{{\cal B}}
+\newcommand{\cL}{{\cal L}}
+\newcommand{\cF}{{\cal F}}
+\newcommand{\dsp}{\displaystyle}
+\renewcommand{\qed}{\hfill{\fbox{}}}
+\newcommand{\cG}{\cal{G}}
+\newcommand{\BP}{\mathbb{P}}
+\newcommand{\bfp}{\bf{p}}
+\newcommand{\iid}{\stackrel{\mathrm{iid}}{\sim}}
+\renewcommand{\baselinestretch}{1}
+\setlength{\parskip}{0.3pt}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+%\newtheorem{proof}[theorem]{Proof}
+%\newenvironment{proof}[1][Proof]{\begin{trivlist}
+%\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{definition}[1][Definition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{example}[1][Example]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+%\newenvironment{remark}[1][Remark]{\begin{trivlist}
+%\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+
+\usepackage{psfig}
+\usepackage{indentfirst}
+\usepackage{setspace}
+\doublespacing
+\begin{document}
+%类似地定义其他"题头"。这里"注"的编号与定义、定理等是分开的
+
+%\def\theequation{\arabic{chapter}.\arabic{equation}}
+%\def\thedefinition{\arabic{chapter}.\arabic{definition}.}
+
+% title - \zihao{1} for size requirement \heiti for font family requirement
+\title{\bf{R Package {\it fairselect} for Features Annealed Independence Rules}}
+
+\author{Ying Lu\\School of Statistics, University of Minnesota\\Work by Jianqing Fan and Yingying Fan\\Department of Operational Research and Financial Engineering\\ Princeton University}
+
+\maketitle
+
+\section{Introduction}
+This R package is about implementing the Features Annealed
+Independence Rules proposed by Fan, J. and Fan, Y. (2008) on high
+dimensional classification. The problem is as follows: \\
+
+For the p-dimensional classification problem between two classes
+$C_1$ and $C_2$, suppose we have $n_k$ observations
+$Y_{k1}...Y_{kn_k}$ in $R^p$ in the kth class. The jth feature of
+the ith sample from class $C_k$ satisfies the model
+\begin{equation*}
+Y_{kij}=\mu_{kij}+\epsilon_{kij}, k=1,2, i=1,2,..n_k, j=1,2...p
+\end{equation*}
+In matrix form, it is
+\begin{equation*}
+Y_{ki}={\bf\mu}_{k}+{\bf \epsilon}_{ki}, k=1,2,
+i=1,2,..n_k,j=1,2...p
+\end{equation*}
+where $\mu_k=(\mu_{k1}...\mu_{kp})'$ is the mean vector from class $
+C_k$, and $\epsilon_{ki}=(\epsilon_{ki1},..\epsilon_{kip})'$ has
+distribution $N(0,\Sigma_k)$.\\
+
+We further denote that $\hat{\mu}_k=\sum_{i=1}^{n_k}
+ Y_{ki}/n_k$, $\hat{\mu}=(\mu_1+\mu_2)/2$,
+$\hat{D}=diag\{(S_{1j}^2+S_{2j}^2)/2\}$. where $S_{kj}^2$ is the
+sample variance of the jth feature in class k. so the classification
+rule is
+\begin{equation*}
+\hat{\delta}(x)=(x-\hat{\mu})'\hat{D}^{-1}(\hat{\mu}_1-\hat{\mu}_2)
+\end{equation*}
+If $\hat{\delta}(x) > 0$, we classify the observation in class 1,
+otherwise we put it in class 2.\\
+
+ When the number of covariates p is
+way larger than the sample size n, classification is difficult since
+it is not easy to know which variables are important and which are
+unimportant. Because of the high dimension issue, the Fisher
+discriminant analysis gives poor performance because the p*p
+variance covariance matrix is huge and estimation of this matrix is
+nearly impossible. Bickel and Levina (2004) propose the independence
+rule by using only the diagonal elements of the variance covariance
+matrix to construct the Fisher's rule. Fan, J. and Fan, Y. (2008)
+show that this is still needs to be improved because the
+classification effect is not satisfactory.  To enhance the
+classification power, Fan, J. and Fan, Y (2008) propose the Features
+Annealed Independence Rules. In their opinion, the dissatisfactory
+performance of the independence rule is due to the inclusion of
+unimportant predictors(features). As a matter of fact, these
+unimportant features accumulate the errors and add to much noise. To
+extract important features in the first step is the key to mitigate
+this problem. They proposed the Features Annealed Independence
+Rules. Two methods are used and named as "t test" and "oracle".
+\begin{equation*}
+T_j=\frac{\hat{Y}_{1j}-\hat{Y}_{2j}}{\sqrt{S_{1j}^2/n_1+S_{2j}^2/n_2}}
+\end{equation*}
+\begin{equation*}
+O_j= \hat{Y}_{1j}-\hat{Y}_{2j}
+\end{equation*}
+where
+\begin{equation*}
+\hat{Y}_{kj}=\sum_{i=1}^{n_k} y_{kij}/n_k
+\end{equation*}
+ The first method is about ranking features according to the
+absolute value of the sample t statistic for each predictor in the
+training sample. The second method is about ranking features
+according to the absolute value of the sample mean difference for
+each predictors in the training sample. These two methods to some
+extent reflect whether the predictors are important or not in the
+classification process. Fan and Fan propose that firstly, we need to
+select important features, and secondly, we only need to construct
+the independence rules
+based on the selected features. \\
+
+\section{Theorems}
+Key Assumptions for the model are: All observations are independent
+across samples and within each class $C_k$; Observations
+$Y_{k1}...Y_{kn_k}$ are identically distributed; $c_1 \leq
+\frac{n_1}{n_2} \leq c_2$, where $c_1$ and $c_2$ are positive
+constants and lastly, $\Sigma_1 = \Sigma_2 = \Sigma$.
+
+\begin{theorem}
+Suppose a is a p-dimensional uniformly distributed random vector on
+a $(p-1)$ dimensional sphere. Let $\lambda_1..\lambda_p$ be the
+eigenvalue of the covariance matrix $\Sigma$. Suppose $\lim_p
+\frac{1}{p^2}\displaystyle\sum_{j=1}^{p}\lambda_j^2<\infty$, and
+$\lim_p \frac{1}{p}\displaystyle\sum_{j=1}^{p}\lambda_j=\tau$ with
+$\tau$ a constant, moreover assume that
+$p^{-1}\alpha'\alpha\rightarrow 0$, then if we define
+\begin{equation}
+\hat{\delta}_a(x)=(a'x-a'\hat{\mu})(a'\hat{\mu}_1-a'\hat{\mu}_2)
+\label{eq:1}
+\end{equation}
+The misclassification error $P(\hat{\delta}_a(X) \leq
+0|Y_{ki},i=1,..n_k,k=1,2)\displaystyle\rightarrow\frac{1}{2}$ in
+probability.
+\end{theorem}
+
+\begin{theorem}
+Let s be a sequence such that $\log(p - s)=o(n^\gamma)$, and
+$\log(s)=o(n^{1/2-\gamma}\beta_n)$ for some $\beta_n \rightarrow 0$
+and $0 < \gamma < \frac{1}{3}$. Suppose that $\min_{1 \leq j \leq s}
+\frac{|a_j|}{\sqrt{\sigma_{1j}^2+\sigma_{2j}^2}}=n^{-\gamma}\beta_n$.
+Then under some conditions, for $x\sim cn^{\gamma/2}$ with c some
+positive constant, we have
+\begin{equation*}
+P(\displaystyle\min_{j \leq s}|T_j| \geq x \hspace{0.3cm}and
+\hspace{0.3cm}\displaystyle\max_{j>s}|T_j|<x)\rightarrow 1
+\end{equation*}
+\end{theorem}
+
+
+
+\section{R Functions}
+\begin{verbatim}
+>fairselect(training, testing, method)
+\end{verbatim}
+ This function does feature
+selection in the binary classification on the high dimensional data
+using FAIR. See reference for more details. Arguments are shown
+below:\\
+{\it training}: training dataset should be in the form of matrix. It
+is used to build models. \\
+{\it testing}: testing dataset should be in the form of matrix. It
+is
+used to check model accuracy.\\
+{\it method}: method has two options: "ttest" or "oracle". They are
+different criteria for feature selection on high dimensional data.\\
+
+The function will return several values:\\
+{\it value}: the minimum misclassification error by employing the
+model
+onto the testing data. \\
+{\it feature}: the optimal number of important features to select.\\
+{\it $m_1$}: the sample mean of the first class in the training data.\\
+{\it $m_2$}: the sample mean of the second class in the training data.\\
+{\it cova}: variance covariance matrix of the training sample data.\\
+
+\begin{verbatim}
+>classify(newdata,fairobject)
+\end{verbatim}
+ This function does binary classification on the new
+dataset based on the model. \\
+{\it newdata}: newdata set should be in the form of numeric.\\
+{\it fairobject}: The {\it fair} object with which we use to construct the classifier.\\
+
+
+
+\section{Examples}
+Here is an artificial example to illustrate how the functions work.
+\begin{verbatim}
+>x=matrix(rnorm(30*100),nrow=30)
+>x[,1]=rbinom(30,1,prob=0.5)
+>y=matrix(rnorm(30*100,0,1),nrow=30)
+>y[,1]=rbinom(30,1,prob=0.5)
+>training=x
+>testing=y
+>newdata=rnorm(99)
+>a=fairselect(x,y,"ttest")  # returns the method we use, features selected,
+sample mean in the training samples for two classes, and sample
+variance covariance of the features.
+>b=fairselect(x,y,"oracle")
+>classify(newdata,a) #returns the value of 0 or 1
+\end{verbatim}
+
+
+
+\bibliographystyle{plain}
+\begin{thebibliography}{99}
+\bibitem[Fan and Fan (2008)]{Fan08}
+{\sc Fan, J. and Fan, Y. }(2008). High-Dimensional Classification
+Using Features Annealed Independence Rules. {\it The Annals of
+Statistics}, {\bf 36(6)}, 2008.
+\bibitem[Bickel and Levina (2004)]{Bickel04}
+{\sc Bickel,P.J. and Levina,E.}(2004).  Some theory for Fisher's
+linear discriminant function, "naive Bayes," and some alternatives
+when here are many more variables than observations. {\it Bernolli},
+{\bf 10}, 989-1010, 2004.
+
+\end{thebibliography}
+
+
+
+\end{document}

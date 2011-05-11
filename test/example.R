@@ -1,0 +1,14 @@
+library(fairselect)
+#example
+x=matrix(rnorm(30*100),nrow=30)
+x[,1]=rbinom(30,1,prob=0.5)
+y=matrix(rnorm(30*100,0,1),nrow=30)
+y[,1]=rbinom(30,1,prob=0.5)
+training=x
+testing=y
+newdata=rnorm(99)
+a=fair(x,y,"ttest")
+b=fair(x,y,"oracle")
+print(a)
+print(b)
+classify(newdata,a)
